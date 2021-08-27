@@ -1,9 +1,9 @@
 {
-  "name": "grudado/facebook-for-magento2",
+  "name": "facebookincubator/facebook-for-magento2",
   "description": "Facebook Business Extension for Magento 2",
   "type": "magento2-module",
   "license": "GPL-1.0-or-later",
-  "version": "1.4.2.1",
+  "version": "1.4.2.2",
   "require": {
     "facebook/php-business-sdk": "9.0.3"
   },
