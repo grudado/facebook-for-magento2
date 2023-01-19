@@ -54,7 +54,7 @@ class ProcessProductAfterSaveEventObserverTest extends CommonTest
         $this->store = $this->createMock(StoreInterface::class);
         $this->fbeHelper->expects($this->once())->method('getStore')->will($this->returnValue($this->store));
         $this->_product = $this->createMock(Product::class);
-        $this->_product->expects($this->once())->method('getId')->will($this->returnValue("1234"));
+        $this->_product->expects($this->once())->method('getSku')->will($this->returnValue("1234"));
         $event = $this->createPartialMock(Event::class, ['getProduct']);
         $event->expects($this->once())->method('getProduct')->will($this->returnValue($this->_product));
         $this->_eventObserverMock = $this->createMock(Observer::class);

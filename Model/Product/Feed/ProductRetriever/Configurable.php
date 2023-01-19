@@ -72,7 +72,7 @@ class Configurable implements ProductRetrieverInterface
 
             foreach ($configurableType->getUsedProducts($product) as $childProduct) {
                 /** @var Product $childProduct */
-                $configurableSettings = ['item_group_id' => $product->getId()];
+                $configurableSettings = ['item_group_id' => $product->getSku()];
                 foreach ($configurableAttributes as $attribute) {
                     $productAttribute = $attribute->getProductAttribute();
                     $attributeCode = $productAttribute->getAttributeCode();

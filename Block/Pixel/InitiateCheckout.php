@@ -17,7 +17,7 @@ class InitiateCheckout extends Common
         $items = $cart->getQuote()->getAllVisibleItems();
         foreach ($items as $item) {
             $product = $item->getProduct();
-            $productIds[] = $product->getId();
+            $productIds[] = $product->getSku();
         }
         return $this->arrayToCommaSeparatedStringValues($productIds);
     }
@@ -52,7 +52,7 @@ class InitiateCheckout extends Common
         foreach ($items as $item) {
             $product = $item->getProduct();
             $price = $priceHelper->currency($product->getFinalPrice(), false, false);
-            $content = '{id:"' . $product->getId() . '",quantity:' . (int)$item->getQty()
+            $content = '{id:"' . $product->getSku() . '",quantity:' . (int)$item->getQty()
                     . ',item_price:' . $price . "}";
             $contents[] = $content;
         }

@@ -192,7 +192,7 @@ class MagentoDataHelper extends AbstractHelper
         $items = $cart->getQuote()->getAllVisibleItems();
         foreach ($items as $item) {
             $product = $item->getProduct();
-            $productIds[] = $product->getId();
+            $productIds[] = $product->getSku();
         }
         return $productIds;
     }
@@ -250,7 +250,7 @@ class MagentoDataHelper extends AbstractHelper
         foreach ($items as $item) {
             $product = $item->getProduct();
             $contents[] = [
-                'product_id' => $product->getId(),
+                'product_id' => $product->getSku(),
                 'quantity' => $item->getQty(),
                 'item_price' => $priceHelper->currency($product->getFinalPrice(), false, false)
             ];
@@ -272,7 +272,7 @@ class MagentoDataHelper extends AbstractHelper
         $items = $order->getAllVisibleItems();
         foreach ($items as $item) {
             $product = $item->getProduct();
-            $productIds[] = $product->getId();
+            $productIds[] = $product->getSku();
         }
         return $productIds;
     }
@@ -313,7 +313,7 @@ class MagentoDataHelper extends AbstractHelper
         foreach ($items as $item) {
             $product = $item->getProduct();
             $contents[] = [
-                'product_id' => $product->getId(),
+                'product_id' => $product->getSku(),
                 'quantity' => (int)$item->getQtyOrdered(),
                 'item_price' => $priceHelper->currency($product->getFinalPrice(), false, false)
             ];

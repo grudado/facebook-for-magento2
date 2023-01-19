@@ -329,7 +329,7 @@ class CategoryCollection
 
         $ids = [];
         foreach ($product_collection as $product) {
-            array_push($ids, "'".$product->getId()."'");
+            array_push($ids, "'".$product->getSku()."'");
         }
         $filter = sprintf("{'retailer_id': {'is_any': [%s]}}", implode(',', $ids));
 //        $this->fbeHelper->log("filter:".$filter);

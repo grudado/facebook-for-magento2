@@ -57,10 +57,10 @@ class ProcessProductAfterDeleteEventObserver implements ObserverInterface
 
         $product = $observer->getEvent()->getProduct();
 
-        if ($product->getId()) {
+        if ($product->getSku()) {
 
             try {
-                $this->fbeHelper->log("deleting product: ". $product->getId());
+                $this->fbeHelper->log("deleting product: ". $product->getSku());
                 $requestData = $this->batchApi->buildProductRequest($product, $method='DELETE');
                 $requestParams = [];
                 $requestParams[0] = $requestData;

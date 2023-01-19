@@ -42,7 +42,7 @@ class ProcessProductAfterDeleteEventObserverTest extends CommonTest
     {
         parent::setUp();
         $this->_product = $this->createMock(Product::class);
-        $this->_product->expects($this->atLeastOnce())->method('getId')->will($this->returnValue("1234"));
+        $this->_product->expects($this->atLeastOnce())->method('getSku')->will($this->returnValue("1234"));
         $this->_product->expects($this->never())->method('getSku');
 
         $event = $this->createPartialMock(Event::class, ['getProduct']);

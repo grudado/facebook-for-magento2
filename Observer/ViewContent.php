@@ -56,14 +56,14 @@ class ViewContent implements ObserverInterface
                 'currency' => $this->_magentoDataHelper->getCurrency()
             ];
             $product = $this->registry->registry('current_product');
-            if ($product && $product->getId()) {
+            if ($product && $product->getSku()) {
                 $customData['value'] = $this->_magentoDataHelper->getValueForProduct($product);
-                $customData['content_ids'] = [$product->getId()];
+                $customData['content_ids'] = [$product->getSku()];
                 $customData['content_category'] = $this->_magentoDataHelper->getCategoriesForProduct($product);
                 $customData['content_name'] = $product->getName();
                 $customData['contents'] = [
                     [
-                        'product_id' => $product->getId(),
+                        'product_id' => $product->getSku(),
                         'item_price' => $this->_magentoDataHelper->getValueForProduct($product)
                     ]
                 ];

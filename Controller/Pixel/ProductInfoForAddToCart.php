@@ -51,7 +51,7 @@ class ProductInfoForAddToCart extends \Magento\Framework\App\Action\Action
 
     private function getValue($product)
     {
-        if ($product && $product->getId()) {
+        if ($product && $product->getSku()) {
             $price = $product->getFinalPrice();
             $price_helper = $this->_fbeHelper->getObject(\Magento\Framework\Pricing\Helper\Data::class);
             return $price_helper->currency($price, false, false);
@@ -64,8 +64,8 @@ class ProductInfoForAddToCart extends \Magento\Framework\App\Action\Action
     {
         $response_data = [];
         $product = $this->_magentoDataHelper->getProductWithSku($product_sku);
-        if ($product->getId()) {
-            $response_data['id'] = $product->getId();
+        if ($product->getSku()) {
+            $response_data['id'] = $product->getSku();
             $response_data['name'] = $product->getName();
             $response_data['category'] = $this->getCategory($product);
             $response_data['value'] = $this->getValue($product);

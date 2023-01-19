@@ -22,7 +22,7 @@ class Purchase extends Common
             $items = $order->getItemsCollection();
             foreach ($items as $item) {
                 $product = $item->getProduct();
-                $productIds[] = $product->getId();
+                $productIds[] = $product->getSku();
             }
         }
         return $this->arrayToCommaSeparatedStringValues($productIds);
@@ -56,7 +56,7 @@ class Purchase extends Common
                 // @todo reuse results from self::getContentIDs()
                 $product = $item->getProduct();
                 $price = $priceHelper->currency($product->getFinalPrice(), false, false);
-                $content = '{id:"' . $product->getId() . '",quantity:' . (int)$item->getQtyOrdered()
+                $content = '{id:"' . $product->getSku() . '",quantity:' . (int)$item->getQtyOrdered()
                         . ',item_price:' . $price . '}';
                 $contents[] = $content;
             }

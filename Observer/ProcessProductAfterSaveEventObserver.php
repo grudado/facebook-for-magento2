@@ -59,7 +59,7 @@ class ProcessProductAfterSaveEventObserver implements ObserverInterface
         }
         /** @var Product $product */
         $product = $observer->getEvent()->getProduct();
-        if (!$product->getId()) {
+        if (!$product->getSku()) {
             return;
         }
         $storeId = $product->getStoreId();

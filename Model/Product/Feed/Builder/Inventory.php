@@ -75,7 +75,7 @@ class Inventory
     public function getStockItem(Product $product)
     {
         $criteria = $this->stockItemCriteriaInterfaceFactory->create();
-        $criteria->setProductsFilter($product->getId());
+        $criteria->setProductsFilter($product->getSku());
         $stocksItems = $this->stockItemRepository->getList($criteria)->getItems();
         return array_shift($stocksItems);
     }

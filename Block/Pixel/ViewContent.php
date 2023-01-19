@@ -16,8 +16,8 @@ class ViewContent extends Common
     {
         $product_ids = [];
         $product = $this->registry->registry('current_product');
-        if ($product && $product->getId()) {
-            $product_ids[] = $product->getId();
+        if ($product && $product->getSku()) {
+            $product_ids[] = $product->getSku();
         }
         return $this->arrayToCommaSeparatedStringValues($product_ids);
     }
@@ -28,7 +28,7 @@ class ViewContent extends Common
     public function getContentName()
     {
         $product = $this->registry->registry('current_product');
-        if ($product && $product->getId()) {
+        if ($product && $product->getSku()) {
             return $this->escapeQuotes($product->getName());
         } else {
             return null;
@@ -68,7 +68,7 @@ class ViewContent extends Common
     public function getValue()
     {
         $product = $this->registry->registry('current_product');
-        if ($product && $product->getId()) {
+        if ($product && $product->getSku()) {
             $price = $product->getFinalPrice();
             $priceHelper = $this->fbeHelper->getObject(\Magento\Framework\Pricing\Helper\Data::class);
             return $priceHelper->currency($price, false, false);
