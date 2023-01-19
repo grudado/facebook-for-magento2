@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ * Copyright (c) Meta Platforms, Inc. and affiliates. All Rights Reserved
  */
 
 namespace Facebook\BusinessExtension\Cron;
@@ -44,8 +44,7 @@ class CategorySyncCron
 
     public function execute()
     {
-        if ($this->systemConfig->isActiveCollectionsSync() == true) {
-            $this->fbeHelper->log('start category sync cron job ');
+        if ($this->systemConfig->isActiveCatalogSync() == true) {
             $this->categoryCollection->pushAllCategoriesToFbCollections();
             return true;
         }

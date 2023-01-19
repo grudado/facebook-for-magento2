@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+ * Copyright (c) Meta Platforms, Inc. and affiliates. All Rights Reserved
  */
 
 namespace Facebook\BusinessExtension\Model\System;
@@ -13,6 +13,8 @@ use Magento\Store\Model\StoreManagerInterface;
 class Config
 {
     const XML_PATH_FACEBOOK_COLLECTIONS_SYNC_IS_ACTIVE = 'facebook/catalog_management/collections_sync';
+
+    const XML_PATH_FACEBOOK_CATALOG_SYNC_IS_ACTIVE = 'facebook/catalog_management/catalog_sync';
 
     const XML_PATH_FACEBOOK_OUT_OF_STOCK_THRESHOLD = 'facebook/inventory_management/out_of_stock_threshold';
 
@@ -100,6 +102,14 @@ class Config
     public function isActiveCollectionsSync()
     {
         return $this->scopeConfig->isSetFlag(self::XML_PATH_FACEBOOK_COLLECTIONS_SYNC_IS_ACTIVE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActiveCatalogSync()
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_FACEBOOK_CATALOG_SYNC_IS_ACTIVE);
     }
 
     /**
